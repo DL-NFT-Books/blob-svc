@@ -1,0 +1,14 @@
+allOf:
+  - $ref: '#/components/schemas/S3Key'
+  - type: object
+    required:
+      - attributes
+    properties:
+      attributes:
+        type: object
+        required:
+          - s3_key
+        properties:
+          s3_key:
+            type: string
+            example: "aasdd.."

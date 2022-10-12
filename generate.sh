@@ -49,9 +49,7 @@ function parseArgs {
 }
 
 function generate {
-    (cd docs && npm run build)
     docker run -v "${OPENAPI_DIR}":/openapi -v "${GENERATED}":/generated "${GENERATOR_IMAGE}" generate -pkg "${PACKAGE_NAME}" --raw-formats-as-types
-    goimports -w ${GENERATED}
 }
 
 parseArgs "$@"

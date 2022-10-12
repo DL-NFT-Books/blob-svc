@@ -17,7 +17,7 @@ func (s *service) router() chi.Router {
 			handlers.CtxLog(s.log),
 		),
 	)
-	r.Route("/integrations/blob-svc", func(r chi.Router) {
+	r.Route("/integrations/blob", func(r chi.Router) {
 		// configure endpoints here
 	})
 

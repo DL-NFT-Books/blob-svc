@@ -1,0 +1,42 @@
+parameters:
+  - name: key
+    in: path
+    description: Banner S3 key
+    required: true
+    schema:
+      type: string
+get:
+  tags:
+    - Banners
+  summary: Get Banner
+  operationId: getBanner
+  parameters:
+    - in: header
+      name: Authorization
+      schema:
+        type: string
+        format: Bearer {token}
+        example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: "#/components/schemas/BannerResponse"
+    '400':
+      $ref: "#/components/responses/BadRequestError"
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            $ref: "#/components/schemas/UnauthorizedError"
+    '404':
+      $ref: '#/components/responses/NotFoundError'
+    '500':
+      $ref: "#/components/responses/InternalError"
