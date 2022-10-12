@@ -12,9 +12,11 @@ import (
 )
 
 type service struct {
-	log      *logan.Entry
-	copus    types.Copus
-	listener net.Listener
+	log       *logan.Entry
+	copus     types.Copus
+	listener  net.Listener
+	mimeTypes *config.MimeTypes
+	aws       *config.AWSConfig
 }
 
 func (s *service) run() error {
@@ -30,9 +32,11 @@ func (s *service) run() error {
 
 func newService(cfg config.Config) *service {
 	return &service{
-		log:      cfg.Log(),
-		copus:    cfg.Copus(),
-		listener: cfg.Listener(),
+		log:       cfg.Log(),
+		copus:     cfg.Copus(),
+		listener:  cfg.Listener(),
+		mimeTypes: cfg.MimeTypes(),
+		aws:       cfg.AWSConfig(),
 	}
 }
 

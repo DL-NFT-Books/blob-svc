@@ -1,11 +1,28 @@
 log:
+  level: debug
   disable_sentry: true
 
-db:
-  url: "postgres://blob:blob@localhost:25432/blob?sslmode=disable"
+#db:
+#  url: "postgres://blob:blob@localhost:25432/blob?sslmode=disable"
+
+mime_types:
+  banner:
+    - img/png
+    - img/jpeg
+    - img/jpg
+  file:
+    - application/pdf
 
 listener:
   addr: :8000
+
+aws:
+  access_key: "AKIATM5TUKXKWTPPLSHJ"
+  secret_key: "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"
+  bucket: "distributedlabtestbucket"
+  region:  "eu-west-1"
+  expiration: 1h
+  ssldisable: true
 
 cop:
   disabled: true
