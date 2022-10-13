@@ -1,0 +1,13 @@
+allOf:
+  - $ref: '#/components/schemas/MediaKey'
+  - type: object
+    required:
+      - attributes
+    properties:
+      attributes:
+        type: object
+        required:
+          - url
+        properties:
+          url:
+            type: string
