@@ -6,6 +6,7 @@ require (
 	github.com/alecthomas/kingpin v2.2.6+incompatible
 	github.com/aws/aws-sdk-go v1.44.114
 	github.com/go-chi/chi v4.1.2+incompatible
+	github.com/golang-jwt/jwt/v4 v4.4.2
 	github.com/google/uuid v1.3.0
 	github.com/rubenv/sql-migrate v1.2.0
 	gitlab.com/distributed_lab/ape v1.7.1

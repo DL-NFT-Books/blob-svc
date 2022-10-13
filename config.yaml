@@ -7,14 +7,11 @@ log:
 
 mime_types:
   banner:
-    - img/png
-    - img/jpeg
-    - img/jpg
+    - image/png
+    - image/jpeg
+    - image/jpg
   file:
     - application/pdf
-
-listener:
-  addr: :8000
 
 aws:
   access_key: "AKIATM5TUKXKWTPPLSHJ"
@@ -23,6 +20,12 @@ aws:
   region:  "eu-west-1"
   expiration: 1h
   ssldisable: true
+
+jwt:
+  signature_key: "default"
+
+listener:
+  addr: :8000
 
 cop:
   disabled: true

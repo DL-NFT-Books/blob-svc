@@ -6,6 +6,7 @@ import (
 	"gitlab.com/distributed_lab/ape/problems"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/requests"
+	"gitlab.com/tokend/nft-books/blob-svc/internal/service/responses"
 	"net/http"
 )
 
@@ -31,5 +32,5 @@ func CreateBanner(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ape.Render(w, helpers.NewKeyResponse(key))
+	ape.Render(w, responses.NewKeyResponse(key))
 }

@@ -17,6 +17,7 @@ type service struct {
 	listener  net.Listener
 	mimeTypes *config.MimeTypes
 	aws       *config.AWSConfig
+	jwt       *config.JWT
 }
 
 func (s *service) run() error {
@@ -37,6 +38,7 @@ func newService(cfg config.Config) *service {
 		listener:  cfg.Listener(),
 		mimeTypes: cfg.MimeTypes(),
 		aws:       cfg.AWSConfig(),
+		jwt:       cfg.JWT(),
 	}
 }
 

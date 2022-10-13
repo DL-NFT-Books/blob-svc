@@ -14,6 +14,7 @@ const (
 	logCtxKey ctxKey = iota
 	mimeTypesCtxKey
 	awsCfgKey
+	jwtCtxKey
 )
 
 func CtxLog(entry *logan.Entry) func(context.Context) context.Context {
@@ -33,6 +34,17 @@ func CtxAwsConfig(entry *config.AWSConfig) func(context.Context) context.Context
 		return context.WithValue(ctx, awsCfgKey, entry)
 	}
 }
+
+func CtxJWT(entry *config.JWT) func(ctx context.Context) context.Context {
+	return func(ctx context.Context) context.Context {
+		return context.WithValue(ctx, jwtCtxKey, entry)
+	}
+}
+
+func JWT(r *http.Request) *config.JWT {
+	return r.Context().Value(jwtCtxKey).(*config.JWT)
+}
+
 func AwsConfig(r *http.Request) *config.AWSConfig {
 	return r.Context().Value(awsCfgKey).(*config.AWSConfig)
 }

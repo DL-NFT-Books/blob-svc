@@ -7,9 +7,9 @@ parameters:
       type: string
 get:
   tags:
-    - Documents
-  summary: Get Document
-  operationId: getDocument
+    - Files
+  summary: Get File
+  operationId: getFile
   parameters:
     - in: header
       name: Authorization
@@ -26,10 +26,7 @@ get:
             type: object
             properties:
               data:
-                $ref: "#/components/schemas/DocumentResponse"
-          encoding:
-            file:
-              contentType: application/pdf
+                $ref: "#/components/schemas/Link"
     '400':
       $ref: "#/components/responses/BadRequestError"
     '401':

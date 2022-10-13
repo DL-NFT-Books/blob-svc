@@ -14,6 +14,7 @@ type Config interface {
 	comfig.Listenerer
 	MimeTypesConfigurator
 	AWSConfigurator
+	JWTConfigurator
 }
 
 type config struct {
@@ -24,6 +25,7 @@ type config struct {
 	getter kv.Getter
 	MimeTypesConfigurator
 	AWSConfigurator
+	JWTConfigurator
 }
 
 func New(getter kv.Getter) Config {
@@ -35,5 +37,6 @@ func New(getter kv.Getter) Config {
 		Logger:                comfig.NewLogger(getter, comfig.LoggerOpts{}),
 		MimeTypesConfigurator: NewMimeTypesConfigurator(getter),
 		AWSConfigurator:       NewAWSConfigurator(getter),
+		JWTConfigurator:       NewJWTConfigurator(getter),
 	}
 }

@@ -6,20 +6,29 @@ import (
 	"strings"
 )
 
-func CheckBannerMimeType(ext string, r *http.Request) (string, error) {
+func CheckBannerMimeType(mtype string, r *http.Request) (string, error) {
 	for _, el := range MimeTypes(r).AllowedBannerMimeTypes {
-		if el == ext {
-			return strings.Split(ext, "/")[1], nil
+		if el == mtype {
+			return strings.Split(mtype, "/")[1], nil
 		}
 	}
 	return "", errors.New("invalid banner extension")
 }
 
-func CheckDocumentMimeType(ext string, r *http.Request) (string, error) {
+func CheckDocumentMimeType(mtype string, r *http.Request) (string, error) {
 	for _, el := range MimeTypes(r).AllowedFileMimeTypes {
-		if el == ext {
-			return strings.Split(ext, "/")[1], nil
+		if el == mtype {
+			return strings.Split(mtype, "/")[1], nil
 		}
 	}
 	return "", errors.New("invalid file extension")
+}
+
+func IsDocument(ext string, r *http.Request) bool {
+	for _, el := range MimeTypes(r).AllowedFileMimeTypes {
+		if strings.Split(el, "/")[1] == ext {
+			return true
+		}
+	}
+	return false
 }
