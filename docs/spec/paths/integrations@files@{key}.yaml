@@ -5,18 +5,18 @@ parameters:
     required: true
     schema:
       type: string
+  - name: Authorization
+    in: header
+    schema:
+      type: string
+      format: Bearer {token}
+      example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 get:
   tags:
     - Files
   summary: Get File
   operationId: getFile
   parameters:
-    - in: header
-      name: Authorization
-      schema:
-        type: string
-        format: Bearer {token}
-        example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
   responses:
     '200':
       description: Success
@@ -27,6 +27,28 @@ get:
             properties:
               data:
                 $ref: "#/components/schemas/Link"
+    '400':
+      $ref: "#/components/responses/BadRequestError"
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            $ref: "#/components/schemas/UnauthorizedError"
+    '404':
+      $ref: '#/components/responses/NotFoundError'
+    '500':
+      $ref: "#/components/responses/InternalError"
+delete:
+  tags:
+    - Files
+  summary: delete File
+  operationId: deleteFile
+  parameters:
+  responses:
+    '204':
+      description: Success
     '400':
       $ref: "#/components/responses/BadRequestError"
     '401':

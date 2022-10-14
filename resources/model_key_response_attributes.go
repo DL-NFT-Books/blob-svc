@@ -5,5 +5,5 @@
 package resources
 
 type KeyResponseAttributes struct {
-	S3Key string `json:"s3_key"`
+	Key string `json:"key"`
 }

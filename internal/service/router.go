@@ -1,12 +1,11 @@
 package service
 
 import (
+	"github.com/go-chi/chi"
+	"gitlab.com/distributed_lab/ape"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/handlers"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/middlewares"
-
-	"github.com/go-chi/chi"
-	"gitlab.com/distributed_lab/ape"
 )
 
 func (s *service) router() chi.Router {
@@ -28,6 +27,7 @@ func (s *service) router() chi.Router {
 		r.Route("/files", func(r chi.Router) {
 			r.Route("/{key}", func(r chi.Router) {
 				r.Get("/", handlers.GetFileByKey)
+				r.Delete("/", handlers.DeleteFile)
 			})
 		})
 		r.Route("/documents", func(r chi.Router) {

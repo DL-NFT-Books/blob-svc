@@ -47,6 +47,26 @@ func GetUrl(key string, config *config.AWSConfig) (string, error) {
 	return req.Presign(config.Expiration)
 }
 
+func DeleteFile(key string, config *config.AWSConfig) error {
+	awsSession := NewAWSSession(config)
+	service := s3.New(awsSession)
+
+	_, err := service.DeleteObject(&s3.DeleteObjectInput{
+		Key:    aws.String(key),
+		Bucket: aws.String(config.Bucket),
+	})
+	if err != nil {
+		return err
+	}
+
+	err = service.WaitUntilObjectNotExists(&s3.HeadObjectInput{
+		Key:    aws.String(key),
+		Bucket: aws.String(config.Bucket),
+	})
+
+	return err
+}
+
 func IsKeyExists(key string, config *config.AWSConfig) (bool, error) {
 	awsSession := NewAWSSession(config)
 	service := s3.New(awsSession)

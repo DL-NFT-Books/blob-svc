@@ -1,18 +1,16 @@
 package handlers
 
 import (
+	"fmt"
 	"gitlab.com/distributed_lab/ape"
 	"gitlab.com/distributed_lab/ape/problems"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/requests"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service/responses"
-	"gitlab.com/tokend/nft-books/blob-svc/resources"
 	"net/http"
-	"strings"
 )
 
-func GetFileByKey(w http.ResponseWriter, r *http.Request) {
-	req, err := requests.NewGetFileByKeyRequest(r)
+func DeleteFile(w http.ResponseWriter, r *http.Request) {
+	req, err := requests.NewGetFileByKeyRequest(r) // As only id is required
 	if err != nil {
 		ape.RenderErr(w, problems.BadRequest(err)...)
 		return
@@ -20,25 +18,19 @@ func GetFileByKey(w http.ResponseWriter, r *http.Request) {
 
 	awsConfig := helpers.AwsConfig(r)
 
+	// Make sure the key exists as the DeleteFile method will not render the KeyNotFound error
 	exists, err := helpers.IsKeyExists(req.Key, awsConfig)
 	if err != nil || !exists {
 		ape.RenderErr(w, problems.NotFound())
 		return
 	}
 
-	url, err := helpers.GetUrl(req.Key, awsConfig)
+	err = helpers.DeleteFile(req.Key, awsConfig)
 	if err != nil {
+		fmt.Println(err)
 		ape.RenderErr(w, problems.InternalError())
 		return
 	}
 
-	var key resources.Key
-	ext := strings.Split(req.Key, ".")[1]
-	if helpers.IsDocument(ext, r) {
-		key = resources.NewKeyInt64(1, resources.DOCUMENT)
-	} else {
-		key = resources.NewKeyInt64(1, resources.IMAGE)
-	}
-
-	ape.Render(w, responses.NewLinkResponse(url, key))
+	ape.Render(w, http.StatusNoContent)
 }
