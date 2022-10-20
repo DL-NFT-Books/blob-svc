@@ -8,7 +8,7 @@ type ResourceType string
 
 // List of ResourceType
 const (
-	DOCUMENT ResourceType = "document"
-	IMAGE    ResourceType = "image"
-	S3KEY    ResourceType = "s3key"
+	DOCUMENTS ResourceType = "documents"
+	IMAGES    ResourceType = "images"
+	S3KEYS    ResourceType = "s3keys"
 )

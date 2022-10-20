@@ -1,14 +1,15 @@
 package middlewares
 
 import (
+	"net/http"
+	"strings"
+	"time"
+
 	"github.com/golang-jwt/jwt/v4"
 	"gitlab.com/distributed_lab/ape"
 	"gitlab.com/distributed_lab/ape/problems"
 	"gitlab.com/distributed_lab/logan/v3/errors"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
-	"net/http"
-	"strings"
-	"time"
 )
 
 const (

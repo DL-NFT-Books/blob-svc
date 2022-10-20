@@ -1,14 +1,15 @@
 package handlers
 
 import (
+	"net/http"
+	"strings"
+
 	"gitlab.com/distributed_lab/ape"
 	"gitlab.com/distributed_lab/ape/problems"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/requests"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/responses"
 	"gitlab.com/tokend/nft-books/blob-svc/resources"
-	"net/http"
-	"strings"
 )
 
 func GetFileByKey(w http.ResponseWriter, r *http.Request) {
@@ -35,9 +36,9 @@ func GetFileByKey(w http.ResponseWriter, r *http.Request) {
 	var key resources.Key
 	ext := strings.Split(req.Key, ".")[1]
 	if helpers.IsDocument(ext, r) {
-		key = resources.NewKeyInt64(1, resources.DOCUMENT)
+		key = resources.NewKeyInt64(1, resources.DOCUMENTS)
 	} else {
-		key = resources.NewKeyInt64(1, resources.IMAGE)
+		key = resources.NewKeyInt64(1, resources.IMAGES)
 	}
 
 	ape.Render(w, responses.NewLinkResponse(url, key))
