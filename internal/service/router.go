@@ -3,12 +3,13 @@ package service
 import (
 	"github.com/go-chi/chi"
 	"gitlab.com/distributed_lab/ape"
+
+	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/handlers"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service/middlewares"
 )
 
-func (s *service) router() chi.Router {
+func (s *service) router(cfg config.Config) chi.Router {
 	r := chi.NewRouter()
 
 	r.Use(
@@ -18,9 +19,8 @@ func (s *service) router() chi.Router {
 			helpers.CtxLog(s.log),
 			helpers.CtxMimeTypes(s.mimeTypes),
 			helpers.CtxAwsConfig(s.aws),
-			helpers.CtxJWT(s.jwt),
+			helpers.CtxDoormanConnector(cfg.DoormanConnector()),
 		),
-		middlewares.CheckAccessToken,
 	)
 
 	r.Route("/integrations", func(r chi.Router) {
@@ -30,9 +30,11 @@ func (s *service) router() chi.Router {
 				r.Delete("/", handlers.DeleteFile)
 			})
 		})
+
 		r.Route("/documents", func(r chi.Router) {
 			r.Post("/", handlers.CreateDocument)
 		})
+		
 		r.Route("/banners", func(r chi.Router) {
 			r.Post("/", handlers.CreateBanner)
 		})

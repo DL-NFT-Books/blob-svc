@@ -1,9 +1,10 @@
 package service
 
 import (
-	"gitlab.com/distributed_lab/logan/v3"
 	"net"
 	"net/http"
+
+	"gitlab.com/distributed_lab/logan/v3"
 
 	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
 
@@ -17,12 +18,11 @@ type service struct {
 	listener  net.Listener
 	mimeTypes *config.MimeTypes
 	aws       *config.AWSConfig
-	jwt       *config.JWT
 }
 
-func (s *service) run() error {
+func (s *service) run(cfg config.Config) error {
 	s.log.Info("Service started")
-	r := s.router()
+	r := s.router(cfg)
 
 	if err := s.copus.RegisterChi(r); err != nil {
 		return errors.Wrap(err, "cop failed")
@@ -38,12 +38,11 @@ func newService(cfg config.Config) *service {
 		listener:  cfg.Listener(),
 		mimeTypes: cfg.MimeTypes(),
 		aws:       cfg.AWSConfig(),
-		jwt:       cfg.JWT(),
 	}
 }
 
 func Run(cfg config.Config) {
-	if err := newService(cfg).run(); err != nil {
+	if err := newService(cfg).run(cfg); err != nil {
 		panic(err)
 	}
 }

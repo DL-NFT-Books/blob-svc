@@ -5,6 +5,7 @@ import (
 	"gitlab.com/distributed_lab/kit/copus"
 	"gitlab.com/distributed_lab/kit/copus/types"
 	"gitlab.com/distributed_lab/kit/kv"
+	doormanCfg "gitlab.com/tokend/nft-books/doorman/connector/config"
 )
 
 type Config interface {
@@ -14,7 +15,8 @@ type Config interface {
 	comfig.Listenerer
 	MimeTypesConfigurator
 	AWSConfigurator
-	JWTConfigurator
+
+	doormanCfg.DoormanConfiger
 }
 
 type config struct {
@@ -25,7 +27,8 @@ type config struct {
 	getter kv.Getter
 	MimeTypesConfigurator
 	AWSConfigurator
-	JWTConfigurator
+
+	doormanCfg.DoormanConfiger
 }
 
 func New(getter kv.Getter) Config {
@@ -37,6 +40,6 @@ func New(getter kv.Getter) Config {
 		Logger:                comfig.NewLogger(getter, comfig.LoggerOpts{}),
 		MimeTypesConfigurator: NewMimeTypesConfigurator(getter),
 		AWSConfigurator:       NewAWSConfigurator(getter),
-		JWTConfigurator:       NewJWTConfigurator(getter),
+		DoormanConfiger:       doormanCfg.NewDoormanConfiger(getter),
 	}
 }
