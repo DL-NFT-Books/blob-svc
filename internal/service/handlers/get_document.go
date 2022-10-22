@@ -11,7 +11,7 @@ import (
 	"gitlab.com/tokend/nft-books/blob-svc/resources"
 )
 
-func GetFileByKey(w http.ResponseWriter, r *http.Request) {
+func GetDocumentByKey(w http.ResponseWriter, r *http.Request) {
 	req, err := requests.NewGetDocumentByKeyRequest(r)
 	if err != nil {
 		ape.RenderErr(w, problems.BadRequest(err)...)
