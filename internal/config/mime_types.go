@@ -11,8 +11,7 @@ type MimeTypesConfigurator interface {
 }
 
 type MimeTypes struct {
-	AllowedBannerMimeTypes []string `fig:"banner,required"`
-	AllowedFileMimeTypes   []string `fig:"file,required"`
+	AllowedMimeTypes []string `fig:"allowed_mime_types,required"`
 }
 
 type mimeTypesConfigurator struct {

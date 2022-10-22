@@ -3,6 +3,7 @@ package service
 import (
 	"github.com/go-chi/chi"
 	"gitlab.com/distributed_lab/ape"
+	"gitlab.com/tokend/nft-books/blob-svc/internal/service/middlewares"
 
 	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/handlers"
@@ -24,19 +25,12 @@ func (s *service) router(cfg config.Config) chi.Router {
 	)
 
 	r.Route("/integrations", func(r chi.Router) {
-		r.Route("/files", func(r chi.Router) {
+		r.Route("/documents", func(r chi.Router) {
+			r.With(middlewares.CheckAccessToken).Post("/", handlers.CreateDocument)
 			r.Route("/{key}", func(r chi.Router) {
 				r.Get("/", handlers.GetFileByKey)
-				r.Delete("/", handlers.DeleteFile)
+				r.With(middlewares.CheckAccessToken).Delete("/", handlers.DeleteFile)
 			})
-		})
-
-		r.Route("/documents", func(r chi.Router) {
-			r.Post("/", handlers.CreateDocument)
-		})
-		
-		r.Route("/banners", func(r chi.Router) {
-			r.Post("/", handlers.CreateBanner)
 		})
 	})
 

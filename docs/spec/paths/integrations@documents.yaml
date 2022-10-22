@@ -4,24 +4,19 @@ post:
   summary: Upload Document
   operationId: uploadDocument
   parameters:
-    - in: header
-      name: Authorization
-      schema:
-        type: string
-        format: Bearer {token}
-        example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+    - $ref: '#/components/parameters/AuthParam'
   requestBody:
     content:
       multipart/form-data:
         schema:
           type: object
           properties:
-            File:
+            Document:
               type: string
               format: base64
         encoding:
-          File:
-            contentType: application/pdf
+          Document:
+            contentType: application/pdf, image/png, image/jpg, image/jpeg
     required: true
   responses:
     '200':

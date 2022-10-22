@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"net/http"
-	"strings"
 
 	"gitlab.com/distributed_lab/ape"
 	"gitlab.com/distributed_lab/ape/problems"
@@ -13,7 +12,7 @@ import (
 )
 
 func GetFileByKey(w http.ResponseWriter, r *http.Request) {
-	req, err := requests.NewGetFileByKeyRequest(r)
+	req, err := requests.NewGetDocumentByKeyRequest(r)
 	if err != nil {
 		ape.RenderErr(w, problems.BadRequest(err)...)
 		return
@@ -33,13 +32,5 @@ func GetFileByKey(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var key resources.Key
-	ext := strings.Split(req.Key, ".")[1]
-	if helpers.IsDocument(ext, r) {
-		key = resources.NewKeyInt64(1, resources.DOCUMENTS)
-	} else {
-		key = resources.NewKeyInt64(1, resources.IMAGES)
-	}
-
-	ape.Render(w, responses.NewLinkResponse(url, key))
+	ape.Render(w, responses.NewLinkResponse(url, resources.NewKeyInt64(1, resources.DOCUMENTS)))
 }

@@ -1,16 +1,16 @@
 package handlers
 
 import (
-	"fmt"
+	"net/http"
+
 	"gitlab.com/distributed_lab/ape"
 	"gitlab.com/distributed_lab/ape/problems"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/requests"
-	"net/http"
 )
 
 func DeleteFile(w http.ResponseWriter, r *http.Request) {
-	req, err := requests.NewGetFileByKeyRequest(r) // As only id is required
+	req, err := requests.NewGetDocumentByKeyRequest(r) // As only key is required
 	if err != nil {
 		ape.RenderErr(w, problems.BadRequest(err)...)
 		return
@@ -27,7 +27,6 @@ func DeleteFile(w http.ResponseWriter, r *http.Request) {
 
 	err = helpers.DeleteFile(req.Key, awsConfig)
 	if err != nil {
-		fmt.Println(err)
 		ape.RenderErr(w, problems.InternalError())
 		return
 	}

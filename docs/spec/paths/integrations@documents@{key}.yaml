@@ -1,22 +1,15 @@
 parameters:
   - name: key
     in: path
-    description: File S3 key
+    description: Document S3 key
     required: true
     schema:
       type: string
-  - name: Authorization
-    in: header
-    schema:
-      type: string
-      format: Bearer {token}
-      example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 get:
   tags:
-    - Files
-  summary: Get File
-  operationId: getFile
-  parameters:
+    - Documents
+  summary: Get Document
+  operationId: getDocument
   responses:
     '200':
       description: Success
@@ -42,10 +35,11 @@ get:
       $ref: "#/components/responses/InternalError"
 delete:
   tags:
-    - Files
-  summary: delete File
-  operationId: deleteFile
+    - Documents
+  summary: delete Document
+  operationId: deleteDocument
   parameters:
+    - $ref: '#/components/parameters/AuthParam'
   responses:
     '204':
       description: Success

@@ -1,9 +1,10 @@
 package requests
 
 import (
-	"gitlab.com/distributed_lab/logan/v3/errors"
 	"mime/multipart"
 	"net/http"
+
+	"gitlab.com/distributed_lab/logan/v3/errors"
 )
 
 func NewCreateDocumentRequest(r *http.Request) (multipart.File, *multipart.FileHeader, error) {
@@ -12,5 +13,5 @@ func NewCreateDocumentRequest(r *http.Request) (multipart.File, *multipart.FileH
 		return nil, nil, errors.Wrap(err, "failed to parse document")
 	}
 
-	return r.FormFile("File")
+	return r.FormFile("Document")
 }

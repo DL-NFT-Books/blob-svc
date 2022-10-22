@@ -5,18 +5,17 @@ log:
 #  url: "postgres://blob:blob@localhost:25432/blob?sslmode=disable"
 
 mime_types:
-  banner:
+  allowed_mime_types:
     - image/png
     - image/jpeg
     - image/jpg
-  file:
     - application/pdf
 
 aws:
   access_key: "ak"
   secret_key: "sk"
   bucket: "storage"
-  region:  "eu-west-1"
+  region: "eu-west-1"
   expiration: 1h
   ssldisable: true
 

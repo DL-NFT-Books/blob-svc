@@ -6,4 +6,3 @@ properties:
     type: string
     enum:
       - documents
-      - images
