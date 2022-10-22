@@ -10,7 +10,6 @@ import (
 
 type Config interface {
 	comfig.Logger
-	//pgdb.Databaser
 	types.Copuser
 	comfig.Listenerer
 	MimeTypesConfigurator
@@ -21,7 +20,6 @@ type Config interface {
 
 type config struct {
 	comfig.Logger
-	//pgdb.Databaser
 	types.Copuser
 	comfig.Listenerer
 	getter kv.Getter
@@ -33,8 +31,7 @@ type config struct {
 
 func New(getter kv.Getter) Config {
 	return &config{
-		getter: getter,
-		//Databaser:  pgdb.NewDatabaser(getter),
+		getter:                getter,
 		Copuser:               copus.NewCopuser(getter),
 		Listenerer:            comfig.NewListenerer(getter),
 		Logger:                comfig.NewLogger(getter, comfig.LoggerOpts{}),

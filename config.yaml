@@ -1,9 +1,6 @@
 log:
   disable_sentry: true
 
-#db:
-#  url: "postgres://blob:blob@localhost:25432/blob?sslmode=disable"
-
 mime_types:
   allowed_mime_types:
     - image/png
