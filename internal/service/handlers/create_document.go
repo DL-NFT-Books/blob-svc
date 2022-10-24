@@ -1,13 +1,14 @@
 package handlers
 
 import (
+	"net/http"
+
 	"github.com/google/uuid"
 	"gitlab.com/distributed_lab/ape"
 	"gitlab.com/distributed_lab/ape/problems"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/requests"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/service/responses"
-	"net/http"
 )
 
 func CreateDocument(w http.ResponseWriter, r *http.Request) {
