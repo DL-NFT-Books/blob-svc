@@ -9,12 +9,14 @@ import (
 )
 
 type Connector struct {
-	base *base.Connector
+	base   *base.Connector
+	client client.Client
 }
 
 func NewConnector(client client.Client) *Connector {
 	return &Connector{
-		base: base.NewConnector(client),
+		client: client,
+		base:   base.NewConnector(client),
 	}
 }
 

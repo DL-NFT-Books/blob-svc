@@ -12,7 +12,7 @@ import (
 )
 
 func CreateDocument(w http.ResponseWriter, r *http.Request) {
-	document, header, err := requests.NewCreateDocumentRequest(r)
+	key, document, header, err := requests.NewCreateDocumentRequest(r)
 	if err != nil {
 		ape.RenderErr(w, problems.BadRequest(err)...)
 		return
@@ -24,8 +24,12 @@ func CreateDocument(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if key == "" {
+		key = uuid.New().String()
+	}
+	key += "." + ext
+
 	awsConfig := helpers.AwsConfig(r)
-	key := uuid.New().String() + "." + ext
 
 	err = helpers.UploadFile(document, key, awsConfig)
 	if err != nil {
