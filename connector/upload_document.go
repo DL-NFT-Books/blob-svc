@@ -58,7 +58,13 @@ func (c *Connector) UploadDocument(raw []byte, key string) (int, error) {
 
 	// creating request
 	req, err := http.NewRequest(http.MethodPost, fullEndpoint, body)
+	if err != nil {
+		return http.StatusBadRequest, errors.Wrap(err, "failed to build request")
+	}
+
+	//  setting headers
 	req.Header.Add("Content-Type", writer.FormDataContentType())
+	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", c.token))
 
 	// creating new client (!) and sending request
 	newCli := http.Client{}

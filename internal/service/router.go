@@ -26,7 +26,7 @@ func (s *service) router(cfg config.Config) chi.Router {
 
 	r.Route("/integrations", func(r chi.Router) {
 		r.Route("/documents", func(r chi.Router) {
-			r.Post("/", handlers.CreateDocument)
+			r.With(middlewares.CheckAccessToken).Post("/", handlers.CreateDocument)
 			r.Route("/{key}", func(r chi.Router) {
 				r.Get("/", handlers.GetDocumentByKey)
 				r.With(middlewares.CheckAccessToken).Delete("/", handlers.DeleteFile)
