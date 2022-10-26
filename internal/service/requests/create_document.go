@@ -1,7 +1,6 @@
 package requests
 
 import (
-	"fmt"
 	"mime/multipart"
 	"net/http"
 	"regexp"
@@ -15,7 +14,6 @@ var keyRegexp = regexp.MustCompile("^[^<>:;(),.?\"*|/]+$")
 func NewCreateDocumentRequest(r *http.Request) (string, multipart.File, *multipart.FileHeader, error) {
 	err := r.ParseMultipartForm(1 << 32)
 	if err != nil {
-		fmt.Println(err)
 		return "", nil, nil, errors.Wrap(err, "failed to parse document")
 	}
 
