@@ -1,7 +1,6 @@
 package helpers
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 
@@ -9,7 +8,6 @@ import (
 )
 
 func CheckDocumentMimeType(mtype string, r *http.Request) (string, error) {
-	fmt.Println(mtype)
 	for _, el := range MimeTypes(r).AllowedMimeTypes {
 		if el == mtype {
 			return strings.Split(mtype, "/")[1], nil

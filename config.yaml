@@ -13,7 +13,7 @@ aws:
   access_key:
   secret_key:
   bucket:
-  region:
+  region: "eu-west-1"
   expiration: 1h
   ssldisable: true
 
