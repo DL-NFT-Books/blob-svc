@@ -22,6 +22,7 @@ func GetDocumentByKey(w http.ResponseWriter, r *http.Request) {
 
 	exists, err := helpers.IsKeyExists(req.Key, awsConfig)
 	if err != nil || !exists {
+		helpers.Log(r).WithError(err).Debug("failed to check key existence or key was not found")
 		ape.RenderErr(w, problems.NotFound())
 		return
 	}

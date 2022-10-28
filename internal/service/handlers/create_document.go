@@ -35,7 +35,7 @@ func CreateDocument(w http.ResponseWriter, r *http.Request) {
 
 		exists, err := helpers.IsKeyExists(key+"."+ext, awsConfig)
 		if err != nil || exists {
-			helpers.Log(r).WithError(err).Debug("failed to check key existence")
+			helpers.Log(r).WithError(err).Debug("failed to check key existence or key was found")
 			ape.RenderErr(w, problems.BadRequest(
 				errors.New("Document with such key already exists or it cannot be checked"))...)
 			return
