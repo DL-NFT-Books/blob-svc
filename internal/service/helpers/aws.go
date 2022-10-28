@@ -14,6 +14,7 @@ import "github.com/aws/aws-sdk-go/aws/session"
 
 func NewAWSSession(config *config.AWSConfig) *session.Session {
 	return session.Must(session.NewSession(&aws.Config{
+		Endpoint: aws.String(config.Endpoint),
 		Credentials: credentials.NewStaticCredentials(
 			config.AccessKeyID,
 			config.SecretKeyID,

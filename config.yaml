@@ -10,6 +10,7 @@ mime_types:
     - application/pdf
 
 aws:
+  endpoint: "http://localstack:4566"
   access_key: "AKIATM5TUKXKWTPPLSHJ"
   secret_key: "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"
   bucket: "distributedlabtestbucket"

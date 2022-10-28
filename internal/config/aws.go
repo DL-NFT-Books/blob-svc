@@ -13,6 +13,7 @@ type AWSConfigurator interface {
 }
 
 type AWSConfig struct {
+	Endpoint    string        `fig:"endpoint,required"`
 	AccessKeyID string        `fig:"access_key,required"`
 	SecretKeyID string        `fig:"secret_key,required"`
 	Bucket      string        `fig:"bucket,required"`
