@@ -17,6 +17,7 @@ aws:
   region: "eu-west-1"
   expiration: 1h
   ssldisable: true
+  force_path_style: true
 
 listener:
   addr: :8000

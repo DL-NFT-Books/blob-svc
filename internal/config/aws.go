@@ -13,13 +13,14 @@ type AWSConfigurator interface {
 }
 
 type AWSConfig struct {
-	Endpoint    string        `fig:"endpoint,required"`
-	AccessKeyID string        `fig:"access_key,required"`
-	SecretKeyID string        `fig:"secret_key,required"`
-	Bucket      string        `fig:"bucket,required"`
-	Expiration  time.Duration `fig:"expiration,required"`
-	SslDisable  bool          `fig:"ssldisable,required"`
-	Region      string        `fig:"region,required"`
+	Endpoint       string        `fig:"endpoint,required"`
+	AccessKeyID    string        `fig:"access_key,required"`
+	SecretKeyID    string        `fig:"secret_key,required"`
+	Bucket         string        `fig:"bucket,required"`
+	Expiration     time.Duration `fig:"expiration,required"`
+	SslDisable     bool          `fig:"ssldisable,required"`
+	ForcePathStyle bool          `fig:"force_path_style"`
+	Region         string        `fig:"region,required"`
 }
 
 func NewAWSConfigurator(getter kv.Getter) AWSConfigurator {

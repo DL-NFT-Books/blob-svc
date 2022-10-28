@@ -19,8 +19,9 @@ func NewAWSSession(config *config.AWSConfig) *session.Session {
 			config.AccessKeyID,
 			config.SecretKeyID,
 			""),
-		Region:     aws.String(config.Region),
-		DisableSSL: aws.Bool(config.SslDisable),
+		Region:           aws.String(config.Region),
+		DisableSSL:       aws.Bool(config.SslDisable),
+		S3ForcePathStyle: aws.Bool(config.ForcePathStyle),
 	}))
 }
 
