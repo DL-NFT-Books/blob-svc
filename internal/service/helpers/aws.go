@@ -4,6 +4,7 @@ import (
 	"mime/multipart"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
@@ -76,6 +77,15 @@ func IsKeyExists(key string, config *config.AWSConfig) (bool, error) {
 		Key:    aws.String(key),
 	})
 	if err != nil {
+		if aerr, ok := err.(awserr.Error); ok {
+			switch aerr.Code() {
+			case "NotFound":
+				return false, nil
+			default:
+				return false, err
+			}
+		}
+
 		return false, err
 	}
 
