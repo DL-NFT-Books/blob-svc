@@ -1,0 +1,58 @@
+parameters:
+  - name: key
+    in: path
+    description: Document S3 key
+    required: true
+    schema:
+      type: string
+get:
+  tags:
+    - Documents
+  summary: Get Document
+  operationId: getDocument
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: "#/components/schemas/Link"
+    '400':
+      $ref: "#/components/responses/BadRequestError"
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            $ref: "#/components/schemas/UnauthorizedError"
+    '404':
+      $ref: '#/components/responses/NotFoundError'
+    '500':
+      $ref: "#/components/responses/InternalError"
+delete:
+  tags:
+    - Documents
+  summary: delete Document
+  operationId: deleteDocument
+  parameters:
+    - $ref: '#/components/parameters/AuthParam'
+  responses:
+    '204':
+      description: Success
+    '400':
+      $ref: "#/components/responses/BadRequestError"
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            $ref: "#/components/schemas/UnauthorizedError"
+    '404':
+      $ref: '#/components/responses/NotFoundError'
+    '500':
+      $ref: "#/components/responses/InternalError"

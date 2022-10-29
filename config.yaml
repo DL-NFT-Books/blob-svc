@@ -1,0 +1,30 @@
+log:
+  disable_sentry: true
+
+mime_types:
+  allowed_mime_types:
+    - image/png
+    - image/jpeg
+    - image/jpg
+    - application/pdf
+
+aws:
+  access_key: "ak"
+  secret_key: "sk"
+  bucket: "storage"
+  region: "eu-west-1"
+  expiration: 1h
+  ssldisable: true
+
+listener:
+  addr: :8000
+
+cop:
+  disabled: true
+  endpoint: "http://..."
+  upstream: "http://..."
+  service_name: blob-svc
+  service_port: 80
+
+doorman:
+  service_url: http://localhost:8054/integrations/doorman

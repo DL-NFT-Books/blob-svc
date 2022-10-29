@@ -1,0 +1,41 @@
+post:
+  tags:
+    - Documents
+  summary: Upload Document
+  operationId: uploadDocument
+  parameters:
+    - $ref: '#/components/parameters/AuthParam'
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            Document:
+              type: string
+              format: base64
+        encoding:
+          Document:
+            contentType: application/pdf, image/png, image/jpg, image/jpeg
+    required: true
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: "#/components/schemas/KeyResponse"
+    '400':
+      $ref: "#/components/responses/BadRequestError"
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            $ref: "#/components/schemas/UnauthorizedError"
+    '500':
+      $ref: "#/components/responses/InternalError"
