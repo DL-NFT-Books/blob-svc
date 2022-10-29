@@ -1,4 +1,5 @@
 log:
+  level: debug
   disable_sentry: true
 
 mime_types:
@@ -9,12 +10,14 @@ mime_types:
     - application/pdf
 
 aws:
-  access_key: "ak"
-  secret_key: "sk"
-  bucket: "storage"
+  endpoint: "http://localstack:4566"
+  access_key: "AKIATM5TUKXKWTPPLSHJ"
+  secret_key: "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"
+  bucket: "distributedlabtestbucket"
   region: "eu-west-1"
   expiration: 1h
   ssldisable: true
+  force_path_style: true
 
 listener:
   addr: :8000

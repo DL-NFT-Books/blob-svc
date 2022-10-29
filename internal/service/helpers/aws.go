@@ -1,24 +1,27 @@
 package helpers
 
 import (
+	"mime/multipart"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
-	"mime/multipart"
 )
 import "github.com/aws/aws-sdk-go/aws/session"
 
 func NewAWSSession(config *config.AWSConfig) *session.Session {
 	return session.Must(session.NewSession(&aws.Config{
+		Endpoint: aws.String(config.Endpoint),
 		Credentials: credentials.NewStaticCredentials(
 			config.AccessKeyID,
 			config.SecretKeyID,
 			""),
-		Region:     aws.String(config.Region),
-		DisableSSL: aws.Bool(config.SslDisable),
+		Region:           aws.String(config.Region),
+		DisableSSL:       aws.Bool(config.SslDisable),
+		S3ForcePathStyle: aws.Bool(config.ForcePathStyle),
 	}))
 }
 
@@ -84,6 +87,7 @@ func IsKeyExists(key string, config *config.AWSConfig) (bool, error) {
 				return false, err
 			}
 		}
+
 		return false, err
 	}
 
