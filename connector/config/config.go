@@ -1,4 +1,4 @@
-package connector
+package config
 
 import (
 	"net/http"
@@ -9,11 +9,12 @@ import (
 	"gitlab.com/distributed_lab/kit/kv"
 	"gitlab.com/distributed_lab/logan/v3/errors"
 	"gitlab.com/tokend/connectors/signed"
+	"gitlab.com/tokend/nft-books/blob-svc/connector/api"
 	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
 )
 
 type Documenter interface {
-	DocumenterConnector() *Connector
+	DocumenterConnector() *api.Connector
 }
 
 type documenter struct {
@@ -32,7 +33,7 @@ type documenterConfig struct {
 	Token string   `fig:"token,required"`
 }
 
-func (c *documenter) DocumenterConnector() *Connector {
+func (c *documenter) DocumenterConnector() *api.Connector {
 	return c.once.Do(func() interface{} {
 		var conf documenterConfig
 
@@ -55,6 +56,6 @@ func (c *documenter) DocumenterConnector() *Connector {
 
 		cli := signed.NewClient(http.DefaultClient, conf.URL)
 
-		return NewConnector(cli, awsConf, conf.Token)
-	}).(*Connector)
+		return api.NewConnector(cli, awsConf, conf.Token)
+	}).(*api.Connector)
 }
