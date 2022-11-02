@@ -6,6 +6,7 @@ import (
 
 	"gitlab.com/distributed_lab/json-api-connector/base"
 	"gitlab.com/distributed_lab/json-api-connector/client"
+	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
 )
 
 const (
@@ -13,16 +14,18 @@ const (
 )
 
 type Connector struct {
-	base   *base.Connector
-	client client.Client
-	token  string
+	base      *base.Connector
+	client    client.Client
+	token     string
+	awsParams *config.AWSConfig
 }
 
-func NewConnector(client client.Client, token string) *Connector {
+func NewConnector(client client.Client, awsConfig config.AWSConfig, token string) *Connector {
 	return &Connector{
-		client: client,
-		base:   base.NewConnector(client),
-		token:  token,
+		client:    client,
+		base:      base.NewConnector(client),
+		token:     token,
+		awsParams: &awsConfig,
 	}
 }
 
