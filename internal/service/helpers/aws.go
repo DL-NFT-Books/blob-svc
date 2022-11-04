@@ -1,6 +1,7 @@
 package helpers
 
 import (
+	"fmt"
 	"mime/multipart"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -44,15 +45,23 @@ func UploadFile(file multipart.File, key string, config *config.AWSConfig) error
 }
 
 func GetUrl(key string, config *config.AWSConfig) (string, error) {
-	awsSession := NewAWSSession(config)
-	service := s3.New(awsSession)
+	//DEPRECATED
+	//awsSession := NewAWSSession(config)
+	//service := s3.New(awsSession)
+	//
+	//req, _ := service.GetObjectRequest(&s3.GetObjectInput{
+	//	Key:    aws.String(key),
+	//	Bucket: aws.String(config.Bucket),
+	//})
+	//
+	//return req.Presign(config.Expiration)
 
-	req, _ := service.GetObjectRequest(&s3.GetObjectInput{
-		Key:    aws.String(key),
-		Bucket: aws.String(config.Bucket),
-	})
-
-	return req.Presign(config.Expiration)
+	return fmt.Sprintf(
+		"https://%s.s3.%s.amazonaws.com/%s",
+		config.Bucket,
+		config.Region,
+		key,
+	), nil
 }
 
 func DeleteFile(key string, config *config.AWSConfig) error {
