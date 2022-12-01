@@ -45,17 +45,7 @@ func UploadFile(file multipart.File, key string, config *config.AWSConfig) error
 }
 
 func GetUrl(key string, config *config.AWSConfig) (string, error) {
-	//DEPRECATED
-	//awsSession := NewAWSSession(config)
-	//service := s3.New(awsSession)
-	//
-	//req, _ := service.GetObjectRequest(&s3.GetObjectInput{
-	//	Key:    aws.String(key),
-	//	Bucket: aws.String(config.Bucket),
-	//})
-	//
-	//return req.Presign(config.Expiration)
-
+	// as the bucket is open, we can simply `glue` the link
 	return fmt.Sprintf(
 		"https://%s.s3.%s.amazonaws.com/%s",
 		config.Bucket,

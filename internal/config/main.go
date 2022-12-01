@@ -9,24 +9,33 @@ import (
 )
 
 type Config interface {
+	// base
 	comfig.Logger
 	types.Copuser
 	comfig.Listenerer
+
+	// other configs
 	MimeTypesConfigurator
 	AWSConfigurator
 
+	// connectors
 	doormanCfg.DoormanConfiger
 }
 
 type config struct {
+	// base
 	comfig.Logger
 	types.Copuser
 	comfig.Listenerer
-	getter kv.Getter
+
+	// other configs
 	MimeTypesConfigurator
 	AWSConfigurator
 
+	// connectors
 	doormanCfg.DoormanConfiger
+
+	getter kv.Getter
 }
 
 func New(getter kv.Getter) Config {

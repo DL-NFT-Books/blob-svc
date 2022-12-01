@@ -18,8 +18,12 @@ func (s *service) router(cfg config.Config) chi.Router {
 		ape.LoganMiddleware(s.log),
 		ape.CtxMiddleware(
 			helpers.CtxLog(s.log),
+
+			// other configs
 			helpers.CtxMimeTypes(s.mimeTypes),
 			helpers.CtxAwsConfig(s.aws),
+
+			// connectors
 			helpers.CtxDoormanConnector(cfg.DoormanConnector()),
 		),
 	)
