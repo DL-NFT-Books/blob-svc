@@ -11,11 +11,10 @@ require (
 	github.com/stretchr/testify v1.8.1
 	gitlab.com/distributed_lab/ape v1.7.1
 	gitlab.com/distributed_lab/figure v2.1.0+incompatible
-	gitlab.com/distributed_lab/json-api-connector v0.2.4
 	gitlab.com/distributed_lab/kit v1.11.1
 	gitlab.com/distributed_lab/logan v3.8.1+incompatible
 	gitlab.com/tokend/connectors v0.1.9
-	gitlab.com/tokend/nft-books/doorman v0.1.0-rc.1.0.20221024153252-83b51d5f1691
+	gitlab.com/tokend/nft-books/doorman v0.1.0-rc.1.0.20221202093129-30c17ef04208
 )
 
 require (

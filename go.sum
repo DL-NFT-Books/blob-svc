@@ -404,8 +404,6 @@ gitlab.com/distributed_lab/ape v1.7.1 h1:LpTmZgG7Lvx6ulopQbH2aWI3s8ey9FsKVjbic3Z
 gitlab.com/distributed_lab/ape v1.7.1/go.mod h1:Qy9Y2arL0hmZIpVpctGEFhdrVsjWtyVJ5G+bZWcFT4s=
 gitlab.com/distributed_lab/figure v2.1.0+incompatible h1:8kNtvWO91BSQ4OsqL2P3qNWSBnh/Q/TdWB8vHy8xvNI=
 gitlab.com/distributed_lab/figure v2.1.0+incompatible/go.mod h1:tk+aPBohT49MGPLy5+eVbE1HpD/CaC5drBHfVpRI8eE=
-gitlab.com/distributed_lab/json-api-connector v0.2.4 h1:wHd82vZ4ZmabEsFEU1mhcIN4kkKEV+QQUJ/qSFroTPs=
-gitlab.com/distributed_lab/json-api-connector v0.2.4/go.mod h1:PfWKMdxGaBCbO5TcWecu/ZFFJXuVuHo/Ur4go7CIPZ4=
 gitlab.com/distributed_lab/kit v1.11.1 h1:BsOxbGZOySl3CQiLtJpXpPYMP+9R3uNK6IL9T6xBNv0=
 gitlab.com/distributed_lab/kit v1.11.1/go.mod h1:MZj5Vb71YBWJ2wLAb9fDvlCYKewmNDNVWjAiERwgbdA=
 gitlab.com/distributed_lab/logan v3.7.2+incompatible/go.mod h1:25oL/FPFXmyYzWeA6vahMvnFJV8P7mOx0jZhRP7nhlc=
@@ -422,8 +420,8 @@ gitlab.com/tokend/go v3.15.0+incompatible h1:+FLJP11ppj5ttU3KNcvvummU3uE6hpju1CY
 gitlab.com/tokend/go v3.15.0+incompatible/go.mod h1:qz38YBc7VL29H2gnXbpRzcEVw2d1NUZ5SVDzIehqDCA=
 gitlab.com/tokend/keypair v0.0.0-20190412110653-b9d7e0c8b312 h1:u8pxrNw8QKIsrmClG71uuTPy22fkePAXBkHgxrXkMU8=
 gitlab.com/tokend/keypair v0.0.0-20190412110653-b9d7e0c8b312/go.mod h1:vdlhN5/oQR7uY8EsGSqPf8bwnmQxxpaq7qrQn5Y3U/w=
-gitlab.com/tokend/nft-books/doorman v0.1.0-rc.1.0.20221024153252-83b51d5f1691 h1:XLxVjd/Yv45skgQ3Y1q2iVuEffsA8kKUsM8rinpUDMY=
-gitlab.com/tokend/nft-books/doorman v0.1.0-rc.1.0.20221024153252-83b51d5f1691/go.mod h1:OP0gfs3KcgJcCAdEadNUT2pMxwBqgEq32bmX9HItFTs=
+gitlab.com/tokend/nft-books/doorman v0.1.0-rc.1.0.20221202093129-30c17ef04208 h1:e4jnCGIjpxx1deC+H9NkOh8hTjvmJ0wU8QpUKz/Z6Nc=
+gitlab.com/tokend/nft-books/doorman v0.1.0-rc.1.0.20221202093129-30c17ef04208/go.mod h1:OP0gfs3KcgJcCAdEadNUT2pMxwBqgEq32bmX9HItFTs=
 gitlab.com/tokend/nft-books/go-sdk v0.1.2 h1:w0+cHanVfAW951iJ4cE/BGy/T/DlukBgf+O7QQjLXkc=
 gitlab.com/tokend/nft-books/go-sdk v0.1.2/go.mod h1:GtEYT+rHPUb5pT8+0PULSnkqkcksmOz7vlfqPxCwhas=
 go.etcd.io/etcd/api/v3 v3.5.0/go.mod h1:cbVKeC6lCfl7j/8jBhAK6aIYO9XOjdptoxU/nLQcPvs=
