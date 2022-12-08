@@ -14,7 +14,7 @@ require (
 	gitlab.com/distributed_lab/kit v1.11.1
 	gitlab.com/distributed_lab/logan v3.8.1+incompatible
 	gitlab.com/tokend/connectors v0.1.9
-	gitlab.com/tokend/nft-books/doorman v0.1.0-rc.1.0.20221202093129-30c17ef04208
+	gitlab.com/tokend/nft-books/doorman v0.1.0-rc.1.0.20221208122624-848d4fe0422f
 )
 
 require (
