@@ -1,6 +1,7 @@
 package helpers
 
 import (
+	"fmt"
 	"mime/multipart"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -13,8 +14,7 @@ import (
 import "github.com/aws/aws-sdk-go/aws/session"
 
 func NewAWSSession(config *config.AWSConfig) *session.Session {
-	return session.Must(session.NewSession(&aws.Config{
-		Endpoint: aws.String(config.Endpoint),
+	awsSessionConfig := aws.Config{
 		Credentials: credentials.NewStaticCredentials(
 			config.AccessKeyID,
 			config.SecretKeyID,
@@ -22,7 +22,13 @@ func NewAWSSession(config *config.AWSConfig) *session.Session {
 		Region:           aws.String(config.Region),
 		DisableSSL:       aws.Bool(config.SslDisable),
 		S3ForcePathStyle: aws.Bool(config.ForcePathStyle),
-	}))
+	}
+
+	if config.Endpoint != "" {
+		awsSessionConfig.Endpoint = aws.String(config.Endpoint)
+	}
+
+	return session.Must(session.NewSession(&awsSessionConfig))
 }
 
 func UploadFile(file multipart.File, key string, config *config.AWSConfig) error {
@@ -39,15 +45,13 @@ func UploadFile(file multipart.File, key string, config *config.AWSConfig) error
 }
 
 func GetUrl(key string, config *config.AWSConfig) (string, error) {
-	awsSession := NewAWSSession(config)
-	service := s3.New(awsSession)
-
-	req, _ := service.GetObjectRequest(&s3.GetObjectInput{
-		Key:    aws.String(key),
-		Bucket: aws.String(config.Bucket),
-	})
-
-	return req.Presign(config.Expiration)
+	// as the bucket is open, we can simply `glue` the link
+	return fmt.Sprintf(
+		"https://%s.s3.%s.amazonaws.com/%s",
+		config.Bucket,
+		config.Region,
+		key,
+	), nil
 }
 
 func DeleteFile(key string, config *config.AWSConfig) error {

@@ -1,0 +1,13 @@
+aws:
+  #endpoint: "http://localstack:4566"
+  access_key: "AKIATM5TUKXKWTPPLSHJ"
+  secret_key: "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"
+  bucket: "dltestbucketdl"
+  region: "eu-west-1"
+  expiration: 1h
+  ssldisable: true
+  force_path_style: true
+
+documenter:
+  url: http://localhost:8000
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMHg0MDk3NDhkZmIzMWNhMTQyNGQxMzE2NjM5MThjN2E0NWYyZWE2NTA3IiwicHVycG9zZSI6InNlc3Npb24iLCJleHAiOjMyODY4MDU0NzR9.5Z7FBn4UrgjaNNOGSy0j98cb3M9san4A8kvGzq98Fsg

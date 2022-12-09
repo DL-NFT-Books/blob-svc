@@ -9,6 +9,9 @@ import (
 	"gitlab.com/distributed_lab/logan/v3/errors"
 )
 
+const DocumentKey = "Document"
+const FilenameKey = "Key"
+
 var keyRegexp = regexp.MustCompile("^[^<>:;(),.?\"*|/]+$")
 
 func NewCreateDocumentRequest(r *http.Request) (string, multipart.File, *multipart.FileHeader, error) {
@@ -17,7 +20,7 @@ func NewCreateDocumentRequest(r *http.Request) (string, multipart.File, *multipa
 		return "", nil, nil, errors.Wrap(err, "failed to parse document")
 	}
 
-	key := r.FormValue("Key")
+	key := r.FormValue(FilenameKey)
 	if key != "" {
 
 		err = validation.Errors{
@@ -29,6 +32,6 @@ func NewCreateDocumentRequest(r *http.Request) (string, multipart.File, *multipa
 		}
 	}
 
-	f, h, err := r.FormFile("Document")
+	f, h, err := r.FormFile(DocumentKey)
 	return key, f, h, err
 }
