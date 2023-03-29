@@ -6,7 +6,7 @@ import (
 
 	"gitlab.com/distributed_lab/logan/v3"
 
-	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
+	"github.com/dl-nft-books/blob-svc/internal/config"
 
 	"gitlab.com/distributed_lab/kit/copus/types"
 	"gitlab.com/distributed_lab/logan/v3/errors"

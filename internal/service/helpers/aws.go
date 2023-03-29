@@ -9,7 +9,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
+	"github.com/dl-nft-books/blob-svc/internal/config"
 )
 import "github.com/aws/aws-sdk-go/aws/session"
 

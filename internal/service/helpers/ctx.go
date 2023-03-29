@@ -3,11 +3,11 @@ package helpers
 import (
 	"context"
 
-	"gitlab.com/tokend/nft-books/doorman/connector"
+	"github.com/dl-nft-books/doorman/connector"
 
 	"net/http"
 
-	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
+	"github.com/dl-nft-books/blob-svc/internal/config"
 
 	"gitlab.com/distributed_lab/logan/v3"
 )

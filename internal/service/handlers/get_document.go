@@ -5,10 +5,10 @@ import (
 
 	"gitlab.com/distributed_lab/ape"
 	"gitlab.com/distributed_lab/ape/problems"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service/requests"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service/responses"
-	"gitlab.com/tokend/nft-books/blob-svc/resources"
+	"github.com/dl-nft-books/blob-svc/internal/service/helpers"
+	"github.com/dl-nft-books/blob-svc/internal/service/requests"
+	"github.com/dl-nft-books/blob-svc/internal/service/responses"
+	"github.com/dl-nft-books/blob-svc/resources"
 )
 
 func GetDocumentByKey(w http.ResponseWriter, r *http.Request) {

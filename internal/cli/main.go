@@ -2,8 +2,8 @@ package cli
 
 import (
 	"gitlab.com/distributed_lab/logan/v3"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service"
+	"github.com/dl-nft-books/blob-svc/internal/config"
+	"github.com/dl-nft-books/blob-svc/internal/service"
 
 	"github.com/alecthomas/kingpin"
 	"gitlab.com/distributed_lab/kit/kv"

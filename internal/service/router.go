@@ -3,11 +3,11 @@ package service
 import (
 	"github.com/go-chi/chi"
 	"gitlab.com/distributed_lab/ape"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service/middlewares"
+	"github.com/dl-nft-books/blob-svc/internal/service/middlewares"
 
-	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service/handlers"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
+	"github.com/dl-nft-books/blob-svc/internal/config"
+	"github.com/dl-nft-books/blob-svc/internal/service/handlers"
+	"github.com/dl-nft-books/blob-svc/internal/service/helpers"
 )
 
 func (s *service) router(cfg config.Config) chi.Router {

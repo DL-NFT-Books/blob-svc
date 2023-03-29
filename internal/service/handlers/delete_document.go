@@ -5,8 +5,8 @@ import (
 
 	"gitlab.com/distributed_lab/ape"
 	"gitlab.com/distributed_lab/ape/problems"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service/helpers"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/service/requests"
+	"github.com/dl-nft-books/blob-svc/internal/service/helpers"
+	"github.com/dl-nft-books/blob-svc/internal/service/requests"
 )
 
 func DeleteFile(w http.ResponseWriter, r *http.Request) {

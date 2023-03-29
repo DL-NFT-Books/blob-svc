@@ -1,6 +1,6 @@
 package responses
 
-import "gitlab.com/tokend/nft-books/blob-svc/resources"
+import "github.com/dl-nft-books/blob-svc/resources"
 
 func NewKeyResponse(resourceKey string) resources.KeyResponseResponse {
 	return resources.KeyResponseResponse{

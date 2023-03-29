@@ -8,8 +8,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"gitlab.com/distributed_lab/kit/kv"
 	"gitlab.com/tokend/connectors/signed"
-	connector2 "gitlab.com/tokend/nft-books/blob-svc/connector/api"
-	"gitlab.com/tokend/nft-books/blob-svc/internal/config"
+	connector2 "github.com/dl-nft-books/blob-svc/connector/api"
+	"github.com/dl-nft-books/blob-svc/internal/config"
 )
 
 func TestGetBanner(t *testing.T) {

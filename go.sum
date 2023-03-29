@@ -89,6 +89,10 @@ github.com/dgraph-io/badger v1.6.0/go.mod h1:zwt7syl517jmP8s94KqSxTlM6IMsdhYy6ps
 github.com/dgrijalva/jwt-go v3.2.0+incompatible h1:7qlOGliEKZXTDg6OTjfoBKDXWrumCAMpl/TFQ4/5kLM=
 github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
 github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2/go.mod h1:SqUrOPUnsFjfmXRMNPybcSiG0BgUW2AuFH8PAnS2iTw=
+github.com/dl-nft-books/doorman v0.1.0-rc.1.0.20230329143604-2590a5e15d38 h1:YzbKI36bN0rgDOf1tDcPZYXRD3kR2NLn2uYNEL+4E/Y=
+github.com/dl-nft-books/doorman v0.1.0-rc.1.0.20230329143604-2590a5e15d38/go.mod h1:5WJHU1A3BCPtueHD7fWEW/IDdslcs6mOy5Lg+AKj7Bk=
+github.com/dl-nft-books/go-sdk v0.1.3-0.20230323134428-c084d93a35a8 h1:/T7X/jECBSsfP50UQoGr6hbjR1tenvu8DJDbA7SPcGw=
+github.com/dl-nft-books/go-sdk v0.1.3-0.20230323134428-c084d93a35a8/go.mod h1:4Q2oIQhKO4R29Hne4ttIxe0KNijh/vNdi7oFlbJLo00=
 github.com/dustin/go-humanize v1.0.0/go.mod h1:HtrtbFcZ19U5GC7JDqmcUSB87Iq5E25KnS6fMYU6eOk=
 github.com/eknkc/amber v0.0.0-20171010120322-cdade1c07385/go.mod h1:0vRUJqYpeSZifjYj7uP3BG/gKcuzL9xWVV/Y+cK33KM=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
@@ -420,10 +424,6 @@ gitlab.com/tokend/go v3.15.0+incompatible h1:+FLJP11ppj5ttU3KNcvvummU3uE6hpju1CY
 gitlab.com/tokend/go v3.15.0+incompatible/go.mod h1:qz38YBc7VL29H2gnXbpRzcEVw2d1NUZ5SVDzIehqDCA=
 gitlab.com/tokend/keypair v0.0.0-20190412110653-b9d7e0c8b312 h1:u8pxrNw8QKIsrmClG71uuTPy22fkePAXBkHgxrXkMU8=
 gitlab.com/tokend/keypair v0.0.0-20190412110653-b9d7e0c8b312/go.mod h1:vdlhN5/oQR7uY8EsGSqPf8bwnmQxxpaq7qrQn5Y3U/w=
-gitlab.com/tokend/nft-books/doorman v0.1.0-rc.1.0.20221208122624-848d4fe0422f h1:ddoLuVWHHPCUdMFbcszPNY2Na7wP8/IyqQx/o1upTjU=
-gitlab.com/tokend/nft-books/doorman v0.1.0-rc.1.0.20221208122624-848d4fe0422f/go.mod h1:OP0gfs3KcgJcCAdEadNUT2pMxwBqgEq32bmX9HItFTs=
-gitlab.com/tokend/nft-books/go-sdk v0.1.2 h1:w0+cHanVfAW951iJ4cE/BGy/T/DlukBgf+O7QQjLXkc=
-gitlab.com/tokend/nft-books/go-sdk v0.1.2/go.mod h1:GtEYT+rHPUb5pT8+0PULSnkqkcksmOz7vlfqPxCwhas=
 go.etcd.io/etcd/api/v3 v3.5.0/go.mod h1:cbVKeC6lCfl7j/8jBhAK6aIYO9XOjdptoxU/nLQcPvs=
 go.etcd.io/etcd/client/pkg/v3 v3.5.0/go.mod h1:IJHfcCEKxYu1Os13ZdwCwIUTUVGYTSAM3YSwc9/Ac1g=
 go.etcd.io/etcd/client/v2 v2.305.0/go.mod h1:h9puh54ZTgAKtEbut2oe9P4L/oqKCVB6xsXlzd7alYQ=
