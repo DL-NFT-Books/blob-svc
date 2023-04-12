@@ -18,8 +18,8 @@ func (c *Connector) UploadDocument(raw []byte, key string) (int, error) {
 
 	// forming multipart/form-data request : setting headers
 	h := make(textproto.MIMEHeader)
-	h.Set("Content-Disposition", fmt.Sprintf(`form-data; name="Document"; filename="document.pdf"`))
-	h.Set("Content-Type", "application/pdf")
+	h.Set("Content-Disposition", fmt.Sprintf(`form-data; name="Document"; filename="blob"`))
+	h.Set("Content-Type", "image/png")
 
 	// forming multipart/form-data request : adding file
 	body := new(bytes.Buffer)
